@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+
 /**
  * Class House
  *
@@ -18,21 +20,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class House extends Model
 {
-    
-    static $rules = [
-		'city' => 'required',
-		'price' => 'required',
-    ];
 
-    protected $perPage = 20;
+  static $rules = [
+    'city' => 'required',
+    'price' => 'required',
+  ];
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['city','price'];
+  protected $perPage = 20;
 
-
-
+  /**
+   * Attributes that should be mass-assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ['city', 'price'];
 }
