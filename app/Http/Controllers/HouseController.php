@@ -64,35 +64,6 @@ class HouseController extends Controller
         return view('house.show', compact('house'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $house = House::find($id);
-
-        return view('house.edit', compact('house'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  House $house
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, House $house)
-    {
-        request()->validate(House::$rules);
-
-        $house->update($request->all());
-
-        return redirect()->route('houses.index')
-            ->with('success', 'House updated successfully');
-    }
 
     /**
      * @param int $id
