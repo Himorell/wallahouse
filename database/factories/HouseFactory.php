@@ -20,16 +20,16 @@ class HouseFactory extends Factory
             //
             // 'imgHouse'=> $this->faker->imageUrl(),
             'price'=> $this->faker->biasedNumberBetween($min = 1, $max = 300, $function = 'sqrt'),
-            'title'=> $this->faker->realText(),
-            'category'=> $this->faker->realText(),
+            'title'=> $this->faker->name(),
+            'category'=> $this->faker->name(),
             'rooms'=> $this->faker->biasedNumberBetween($min = 1, $max = 10, $function = 'sqrt'),
             'baths'=> $this->faker->biasedNumberBetween($min = 1, $max = 5, $function = 'sqrt'),
             'persons'=> $this->faker->biasedNumberBetween($min = 1, $max = 20, $function = 'sqrt'),
             'population'=> $this->faker->city(),
             'province'=> $this->faker->city(),
-            'preferences'=> $this->faker->realText(),
+            'preferences'=> $this->faker->name(),
             'nameProperty'=> $this->faker->name(),
-            'phone'=> $this->faker->text(),
+            'phone'=> $this->faker->name(),
             
         ];
     }

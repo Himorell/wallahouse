@@ -16,7 +16,7 @@ class CRUDHouseTest extends TestCase
         $this->withExceptionHandling();
         $houses = House::factory(2)->create();
         $house = $houses[0];
-        $response = $this->get(route('houses.index'));
+        $response = $this->get(route('house.index'));
         $response->assertSee($house->title);
         $response->assertStatus(200)->assertViewIs('house.index');
     }
@@ -27,7 +27,7 @@ class CRUDHouseTest extends TestCase
         $house = House::factory()->create();
         $this->assertCount(1, House::all());
 
-        $response = $this->delete(route('houses.destroy', $house->id));
+        $response = $this->delete(route('house.destroy', $house->id));
         $this->assertCount(0, House::all());
     }
 
@@ -37,7 +37,7 @@ class CRUDHouseTest extends TestCase
         
         $response = $this->post(route ('house.store'),
         [
-            'price' => 80,
+            'price' => '80',
             'title' => 'titleValue',
             'category' => 'destinationAddress',
             'rooms' => '5',
@@ -59,8 +59,8 @@ class CRUDHouseTest extends TestCase
         $this->withExceptionHandling();
         $house=House::factory()->create();
         $this->assertCount(1,House::all());
-        $response=$this->get(route('showhouse', $house->id));
-        $response->assertSee($house->name);
-        $response->assertStatus(200)->assertViewIs('houses.show');
+        $response=$this->get(route('house.show', $house->id));
+        $response->assertSee($house->title);
+        $response->assertStatus(200)->assertViewIs('house.show');
     }
 }
