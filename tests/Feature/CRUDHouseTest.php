@@ -1,0 +1,66 @@
+<?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+use App\Models\House;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class CRUDHouseTest extends TestCase
+{
+    /**
+     * A basic feature test example.
+     */
+    public function test_listHouseAppearInHomeView() {
+        $this->withExceptionHandling();
+        $houses = House::factory(2)->create();
+        $house = $houses[0];
+        $response = $this->get(route('houses.index'));
+        $response->assertSee($house->title);
+        $response->assertStatus(200)->assertViewIs('house.index');
+    }
+
+    public function test_aHouseCanBeDeleted() {
+        $this->withExceptionHandling();
+
+        $house = House::factory()->create();
+        $this->assertCount(1, House::all());
+
+        $response = $this->delete(route('houses.destroy', $house->id));
+        $this->assertCount(0, House::all());
+    }
+
+    public function test_aHouseCanBeCreated(){
+        $this->withExceptionHandling();
+
+        
+        $response = $this->post(route ('house.store'),
+        [
+            'price' => 80,
+            'title' => 'titleValue',
+            'category' => 'destinationAddress',
+            'rooms' => '5',
+            'baths' => '1',
+            'persons' => '4',
+            'population' => 'populationValue',
+            'province' => 'provinceValue',
+            'preferences' => 'preferences',
+            'nameProperty' => '3',
+            'phone' => '600123456',
+            
+        ]);
+
+        $this->assertCount(1,House::all()); 
+    }
+
+
+    public function test_aHouseCanBeShowed(){
+        $this->withExceptionHandling();
+        $house=House::factory()->create();
+        $this->assertCount(1,House::all());
+        $response=$this->get(route('showhouse', $house->id));
+        $response->assertSee($house->name);
+        $response->assertStatus(200)->assertViewIs('houses.show');
+    }
+}

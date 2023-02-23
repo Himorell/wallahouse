@@ -32,7 +32,7 @@ class HouseController extends Controller
     public function create()
     {
         $house = new House();
-        return view('house.create', compact('house'));
+        return view('houses.create', compact('house'));
     }
 
     /**
@@ -61,7 +61,7 @@ class HouseController extends Controller
     {
         $house = House::find($id);
 
-        return view('house.show', compact('house'));
+        return view('houses.show', compact('house'));
     }
 
     /**
@@ -74,7 +74,7 @@ class HouseController extends Controller
     {
         $house = House::find($id);
 
-        return view('house.edit', compact('house'));
+        return view('houses.edit', compact('house'));
     }
 
     /**

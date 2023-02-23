@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->string('title');
             $table->string('category');
             $table->integer('rooms');
@@ -23,8 +23,8 @@ return new class extends Migration
             $table->integer('persons');
             $table->string('population');
             $table->string('province');
-            $table->string('description');
-            $table->string('preferences');
+            $table->string('description')->nullable();
+            $table->string('preferences')->nullable();
             $table->string('nameProperty');
             $table->string('phone');
 
